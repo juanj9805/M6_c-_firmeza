@@ -1,4 +1,7 @@
 ﻿using Firmeza.Domain.Data;
+using Firmeza.Domain.Interfaces;
+using Firmeza.Domain.Repositories;
+using Firmeza.Domain.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +12,9 @@ var connectionString = builder.Configuration.GetConnectionString("SqlConnection"
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {

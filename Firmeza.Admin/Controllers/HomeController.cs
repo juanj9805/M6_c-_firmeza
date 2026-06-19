@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Firmeza.Domain.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Firmeza.Admin.Controllers;
 
