@@ -1,0 +1,59 @@
+Desarrollar la API de Firmeza para gestionar operaciones del negocio y permitir la comunicación con otros módulos
+Objetivo de la Historia de usuario
+Como desarrollador, quiero construir una API RESTful con ASP.NET Core que exponga los endpoints necesarios para manejar productos, clientes y ventas, de modo que pueda ser consumida por otros proyectos como Blazor y cualquier cliente.
+
+TASK 1
+Agregar el proyecto de la API a la solucion
+
+Agregar un nuevo proyecto del tipo ASP.NET Core Web API a la solución del Firmeza. Configurar correctamente el namespace y las referencias necesarias para mantener la coherencia de la arquitectura.
+TASK 2
+Configurar la base de datos en PostgreSQL
+
+La API debe conectarse a la misma base de datos utilizada en el módulo de Razor o manejar los mismos datos. Configurar la cadena de conexión en appsettings.json y validar el acceso mediante consultas simples a las tablas ya creadas (productos, clientes, ventas, etc.).
+TASK 3
+Implementar Identity y autenticación JWT (con rol de cliente)
+
+Agregar la autenticación basada en Identity (como en Razor) y complementarla con tokens JWT.
+
+En esta etapa se debe crear un nuevo rol llamado “Cliente”, que representará a los usuarios que realizan compras a través del portal Blazor. Configurar las políticas de autorización para distinguir entre administradores y clientes.
+TASK 4
+Implementar AutoMapper y DTOs
+
+Instalar y configurar AutoMapper para transformar entidades en DTOs (Data Transfer Objects). Crear perfiles de mapeo para las principales entidades del sistema: productos, clientes y ventas.
+TASK 5
+Crear controladores base (Productos, Clientes, Ventas)
+
+Implementar controladores RESTful que permitan realizar las operaciones CRUD para las entidades principales del sistema:
+GET para obtener listados o detalles.
+POST para crear nuevos registros.
+PUT para actualizar.
+DELETE para eliminar.
+
+Todos deben responder con DTOs y utilizar AutoMapper.
+TASK 6
+Crear módulo de gestión de productos
+
+CRUD completo (crear, leer, actualizar, eliminar) de productos con ViewModels y validaciones. Permitir búsqueda y filtrado.
+TASK 7
+Configurar Swagger para documentación automática
+
+Agregar e integrar Swagger (Swashbuckle) para documentar y probar los endpoints de la API. Asegurarse de incluir la autenticación JWT en el Swagger UI.
+TASK 8
+Crear módulo de gestión de clientes
+
+Configurar un servicio de envío de correos electrónicos real utilizando un servidor SMTP de Gmail.
+El sistema debe ser capaz de enviar notificaciones como confirmaciones de compra o registros de usuario.
+El diseño debe permitir sustituir este servicio por un SMTP empresarial en el futuro sin necesidad de modificar la lógica principal del código.
+TASK 9
+Agregar pruebas unitarias
+
+Crear un nuevo proyecto dentro de la misma solución llamado Firmeza.Tests. Implementar al menos una prueba unitaria básica para los controladores y servicios usando xUnit.
+Criterios de aceptación
+La API se conecta correctamente a la misma base de datos usada por Razor.
+Se crea y configura el nuevo rol “Cliente” con autenticación JWT funcional.
+Todos los endpoints CRUD funcionan correctamente y están documentados en Swagger.
+Los DTOs y AutoMapper están correctamente configurados.
+El servicio de correo SMTP envía correos reales.
+Se incluyen al menos 1 prueba unitaria exitosa.
+El Dockerfile genera una imagen funcional de la API (Opcional).
+La documentación explica claramente cómo consumir la API y probar los endpoints.

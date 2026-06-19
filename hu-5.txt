@@ -1,0 +1,67 @@
+Firmeza – Pruebas Automatizadas y Despliegue Orquestado en Docker
+Objetivo de la Historia de usuario
+Como desarrollador del sistema Firmeza, quiero crear un proyecto de pruebas automatizadas con xUnit y preparar un entorno de despliegue basado en Docker que ejecute primero las pruebas y solo levante la infraestructura completa si todas pasan correctamente, garantizando calidad antes de iniciar los servicios del sistema.
+
+TASK 1
+Crear el proyecto de pruebas automatizadas (Firmeza.Tests)
+
+Crear proyecto xUnit dentro de la solución.
+Agregar referencias necesarias hacia el proyecto de la API u otros proyectos compartidos.
+Incluir pruebas unitarias que validen lógica de negocio esencial, servicios, validaciones o utilidades.
+Las pruebas deben poder ejecutarse con dotnet test dentro de un contenedor Docker.
+TASK 2
+Crear Dockerfile para Firmeza.Tests
+
+Crear un Dockerfile dedicado para ejecutar pruebas. Debe:
+Copiar el código de la solución completa.
+Restaurar dependencias.
+Compilar.
+Ejecutar dotnet test.
+
+Si una prueba falla, el contenedor debe finalizar con un código de salida distinto de 0.
+TASK 3
+Crear Dockerfile para cada proyecto existente
+
+Crear un Dockerfile funcional en modo producción para cada uno:
+Firmeza.Admin (Razor Pages).
+Firmeza.API (API REST construida en semana 3).
+Firmeza.Client (SPA React/Angular/Vue).
+
+Cada Dockerfile debe:
+Restaurar dependencias.
+Compilar en modo Release.
+Publicar.
+Ejecutar la app con la imagen correspondiente (SDK + ASP.NET o Node/Nginx según el caso)
+TASK 4
+Crear el archivo docker-compose.yml en la raíz de la solución
+
+Este archivo debe:
+Definir el servicio tests como primer paso obligatorio.
+Definir contenedor de base de datos (PostgreSQL) o las variables de entorno de donde se encuentra la base de datos.
+Definir servicios:
+api
+admin
+client
+Configurar depends_on en el archivo para determinar qué proyecto se levanta primero, como por ejemplo primero ejecuto las pruebas y luego levanto el admin.
+TASK 5
+Levantar toda la solución desde Docker
+
+Verificar que el comando docker compose up --build realiza el proceso completo:
+Ejecutar las pruebas automatizadas.
+Si las pruebas fallan, detener todo el despliegue.
+Si las pruebas pasan, levantar:
+Base de datos
+API
+Admin
+Cliente SPA
+Todo debe funcionar sin necesidad de abrir ningún IDE o servidor manualmente.
+Criterios de aceptación
+Existe un proyecto Firmeza.Tests con pruebas ejecutables desde Docker.
+Cada proyecto de la solución tiene un Dockerfile en modo producción.
+El archivo docker-compose.yml orquesta correctamente todos los contenedores.
+El servicio tests es obligatorio:
+Si falla, aborta el despliegue.
+Si pasa, inicia el resto de servicios.
+La solución completa debe levantarse correctamente usando un solo comando: docker compose up --build
+El TL NO debe necesitar abrir Visual Studio Code, ni correr ningún servidor manualmente.
+El entorno final debe comportarse como un despliegue real de producción.

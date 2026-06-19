@@ -1,0 +1,78 @@
+Firmeza – Módulo Administrativo Base (Infraestructura + Panel + Productos + Clientes)
+Objetivo de la Historia de usuario
+Como administrador, quiero gestionar y actualizar los productos y clientes del negocio desde un panel Razor, utilizando una base de datos PostgreSQL creada mediante migraciones y con un sistema de autenticación que diferencie administradores y clientes.
+
+TASK 1
+Crear el proyecto Razor
+
+Crear una solución vacía llamada Firmeza, que servirá como contenedor principal de todos los módulos del sistema. Dentro de esta solución, agregar el primer proyecto de tipo ASP.NET Core Web (versión 8.10 o superior), siguiendo buenas prácticas de estructura y nombrado. Configurar las dependencias iniciales:
+Entity Framework Core + Npgsql (PostgreSQL)
+Identity
+EPPlus (queda instalada, aunque no se usa aún)
+iTextSharp o QuestPDF (queda instalada, aunque no se usa aún)
+TASK 2
+Configurar la base de datos en PostgreSQL
+
+Configurar la conexión en appsettings.json y preparar el contexto de datos ApplicationDbContext. Asegurarse de que las migraciones creen la base de datos automáticamente.
+Requisito obligatorio: toda la estructura de la base de datos debe construirse mediante migraciones EF Core, no scripts SQL manuales.
+TASK 3
+Implementar las entidades base del sistema
+
+Modelar las entidades necesarias para representar el negocio de venta y distribución de materiales de construcción. Por ejemplo, considerar aspectos como productos, clientes, ventas y detalles de ventas. El diseño y las relaciones deben ser definidos por el equipo según la lógica de negocio.
+TASK 4
+Implementar autenticación y roles con Identity
+
+Configurar Identity para manejar el inicio de sesión y registro de usuarios, pero con roles diferenciados:
+Administrador: accede al panel Razor.
+Cliente: pertenece al sistema, pero no puede acceder a Razor (solo a través de Blazor, React, Angular, Vue etc...).
+
+El sistema debe validar el rol antes de permitir el acceso. Si un cliente intenta iniciar sesión en Razor, debe ser redirigido o bloqueado.
+TASK 5
+Diseñar el panel administrativo (Dashboard)
+
+Crear una interfaz de administración moderna con Bootstrap 5 o Tailwind CSS, que incluya:
+Barra lateral con navegación (Inicio, Productos, Clientes, Ventas).
+Dashboard con métricas básicas (total de productos, clientes y ventas).
+TASK 6
+Crear módulo de gestión de productos
+
+CRUD completo (crear, leer, actualizar, eliminar) de productos con ViewModels y validaciones. Permitir búsqueda y filtrado.
+TASK 7
+Implementar manejo básico de errores con try-catch
+
+Validar que la edad ingresada sea un número entero.
+Capturar excepciones al convertir datos (int.Parse).
+Mostrar mensajes amigables al usuario si la entrada es incorrecta.
+TASK 8
+Crear módulo de gestión de clientes
+
+CRUD de clientes con validaciones de correo, documento y teléfono etc. Permitir búsquedas por nombre o documento.
+TASK 9
+Aplicar diseño visual y experiencia de usuario
+
+Uniformar el diseño con colores, tipografía y espaciado coherente. Agregar encabezado, pie de página y navegación lateral.
+TASK 10
+Documentar y respaldar técnicamente el proyecto
+
+Crear una documentación completa del proyecto que incluya toda la información técnica y visual necesaria para su comprensión y despliegue. Debe incluir:
+Archivo README.md con la información general del sistema.
+Diagramas técnicos (modelo entidad-relación y diagrama de clases).
+Instrucciones básicas de instalación y ejecución (local y Docker).
+TASK 11
+Agregar pruebas unitarias al proyecto (opcional pero recomendadas)
+
+Agregar al menos una prueba unitaria básica al proyecto para validar la funcionalidad de algún componente o servicio clave del sistema.
+
+Debes investigar y practicar el uso de xUnit, aplicándolo en un caso sencillo del dominio del negocio. Esta tarea busca familiarizarte desde temprano con las pruebas automatizadas, sin requerir una cobertura completa en esta etapa.
+TASK 12
+Preparar entorno para despliegue (opcional pero recomendadas)
+
+Comienza a preparar el entorno para el despliegue del sistema utilizando Docker. Crea un borrador del Dockerfile y del archivo docker-compose.yml, definiendo los servicios básicos de la API y la base de datos PostgreSQL.
+
+No es obligatorio tenerlos completamente funcionales en esta etapa, pero sí dejar la estructura inicial lista para continuar en semanas posteriores.
+Criterios de aceptación
+El sistema permite login de administrador y restringe acceso a clientes en Razor.
+Toda la estructura de base de datos se genera con migraciones EF Core.
+Panel funcional con dashboard, productos, clientes y ventas.
+Diseño limpio, navegable y coherente.
+Documentación, diagramas.

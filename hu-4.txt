@@ -1,0 +1,57 @@
+Construcción del Módulo del Cliente con Framework Web
+Objetivo de la Historia de usuario
+Como cliente de la empresa Firmeza, quiero poder registrarme, iniciar sesión, visualizar los productos disponibles y realizar compras en línea, para adquirir materiales de construcción o alquilar vehículos de forma práctica, segura y sin intermediarios.
+
+TASK 1
+Crear el proyecto Frontend
+
+Dentro de la solución principal Firmeza, crear un nuevo proyecto de tipo frontend (React, Angular, Vue, Next.js, etc.).
+Configurar el proyecto para consumir datos desde la API creada previamente.
+Verificar que compile correctamente y se ejecute de forma independiente desde su propio puerto.
+TASK 2
+Configurar autenticación JWT
+
+Implementar el flujo de autenticación basado en JWT consumiendo el endpoint de la API.
+Al autenticarse correctamente, guardar el token JWT en almacenamiento local seguro (LocalStorage o SessionStorage).
+Incluir el token en las cabeceras de solicitudes posteriores (Authorization: Bearer ).
+Manejar la expiración del token y redirección automática al login cuando no sea válido.
+
+Importante: Solo se deben consumir los endpoints habilitados para el rol Cliente (registro, autenticación, consulta de productos, creación de ventas, descarga de comprobante). Endpoints de administración (usuarios, roles, inventario, etc.) no deben ser accesibles desde el frontend.
+TASK 3
+Módulo de registro e inicio de sesión del cliente
+
+Crear los componentes o vistas necesarias para el registro e inicio de sesión de clientes.
+Permitir el registro mediante el endpoint correspondiente.
+Implementar el inicio de sesión y almacenamiento seguro del token JWT.
+Redirigir al catálogo de productos una vez autenticado correctamente.
+TASK 4
+Catálogo de productos y carrito de compras
+
+Crear componentes o vistas equivalentes a Productos y Carrito.
+Mostrar los productos disponibles desde el endpoint público o autorizado.
+Permitir agregar productos al carrito y visualizar cantidades, precios y totales.
+Calcular automáticamente el subtotal, impuestos y total de la compra.
+TASK 5
+Enviar correo electrónico con el comprobante
+
+A través de la API (usando SMTP real de Gmail), enviar el comprobante al correo del cliente después de la compra.
+En el frontend, mostrar un mensaje de confirmación indicando que el comprobante fue enviado correctamente.
+TASK 6
+Interfaz y experiencia de usuario
+
+Aplicar un diseño agradable, limpio y adaptativo usando Bootstrap, TailwindCSS o cualquier otro disponible.
+Crear un layout de navegación con encabezado, menú de productos y opciones de sesión.
+Mostrar el nombre del cliente autenticado y permitir cerrar sesión limpiando el token.
+TASK 7
+Servicio de correo (gestión de clientes)
+
+Configurar un servicio SMTP real utilizando Gmail (o similar).
+Permitir envío de notificaciones de confirmación de compra o registro de usuario.
+Diseñar el servicio para poder reemplazar fácilmente el servidor SMTP en el futuro (por ejemplo, un servidor empresarial).
+Criterios de aceptación
+El módulo cliente (SPA) se comunica correctamente con la API y maneja JWT.
+Solo se accede a endpoints del rol “Cliente”.
+El cliente puede registrarse, iniciar sesión, ver productos, realizar compras y recibir comprobante PDF.
+El correo con comprobante se envía exitosamente.
+El diseño es funcional, claro y centrado en la experiencia del usuario.
+Se incluye documentación y al menos una prueba unitaria básica.

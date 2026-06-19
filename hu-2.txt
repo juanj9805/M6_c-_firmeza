@@ -1,0 +1,54 @@
+Firmeza – Carga masiva, exportaciones, recibos PDF y documentación técnica
+Objetivo de la Historia de usuario
+Como administrador, quiero importar y exportar información del negocio mediante archivos Excel y PDF, además de generar recibos en PDF al registrar ventas, para mantener los datos actualizados y brindar soporte documental al proceso.
+
+TASK 1
+Implementar carga masiva de datos desnormalizados mediante Excel
+
+Usar EPPlus para permitir la importación de archivos .xlsx no normalizados (datos desorganizados o mezclados). El sistema debe:
+Leer datos provenientes de múltiples tablas (productos, clientes, ventas, etc.).
+Normalizar automáticamente la información en memoria (dividirla y relacionarla).
+Validar datos obligatorios (precio, cantidad, nombre, cliente, etc.).
+Insertar o actualizar registros según corresponda.
+Generar un log de errores o inconsistencias.
+
+Ejemplo:
+si el archivo tiene productos y clientes mezclados, el sistema debe identificar qué columnas corresponden a cada tabla y guardar los datos en las tablas correctas.
+TASK 2
+Implementar exportación de información y generación de comprobantes PDF
+
+Permitir exportar datos (productos, clientes, ventas) a Excel o PDF. Al registrar una venta, el sistema debe generar un recibo en PDF, con:
+Datos del cliente
+Fecha y número de venta
+Lista de productos
+Totales e IVA
+
+El recibo debe almacenarse en una carpeta wwwroot/recibos y poder descargarse desde la interfaz.
+TASK 3
+Aplicar diseño visual y experiencia de usuario
+
+Uniformar el diseño con colores, tipografía y espaciado coherente. Agregar encabezado, pie de página y navegación lateral.
+TASK 4
+Documentar y respaldar técnicamente el proyecto
+
+Crear una documentación completa del proyecto que incluya toda la información técnica y visual necesaria para su comprensión y despliegue. Debe incluir:
+Archivo README.md con la información general del sistema.
+Diagramas técnicos (modelo entidad-relación y diagrama de clases).
+Instrucciones básicas de instalación y ejecución (local y Docker).
+TASK 5
+Agregar pruebas unitarias al proyecto (opcional pero recomendadas)
+
+Agregar al menos una prueba unitaria básica al proyecto para validar la funcionalidad de algún componente o servicio clave del sistema.
+
+Debes investigar y practicar el uso de xUnit, aplicándolo en un caso sencillo del dominio del negocio. Esta tarea busca familiarizarte desde temprano con las pruebas automatizadas, sin requerir una cobertura completa en esta etapa.
+TASK 6
+Preparar entorno para despliegue (opcional pero recomendadas)
+
+Comienza a preparar el entorno para el despliegue del sistema utilizando Docker. Crea un borrador del Dockerfile y del archivo docker-compose.yml, definiendo los servicios básicos de la API y la base de datos PostgreSQL.
+
+No es obligatorio tenerlos completamente funcionales en esta etapa, pero sí dejar la estructura inicial lista para continuar en semanas posteriores.
+Criterios de aceptación
+Soporta importación de datos desnormalizados desde Excel, los normaliza e inserta correctamente.
+Exportación de datos a Excel y PDF implementada.
+Generación automática de recibos PDF al registrar ventas.
+Diseño limpio, navegable y coherente.
