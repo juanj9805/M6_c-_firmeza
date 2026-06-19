@@ -26,6 +26,10 @@ public class AppDbContext : IdentityDbContext
                 .WithMany(c => c.Sales)
                 .HasForeignKey(s => s.ClientId)
                 .OnDelete(DeleteBehavior.Restrict);
+            
+            entity.Property(s => s.SubTotal).HasPrecision(18, 2);
+            entity.Property(s => s.Tax).HasPrecision(18, 2);
+            entity.Property(s => s.Total).HasPrecision(18, 2);
         });
 
         builder.Entity<SaleDetail>(entity =>
@@ -34,14 +38,20 @@ public class AppDbContext : IdentityDbContext
                 .WithMany(s => s.SaleDetails)
                 .HasForeignKey(s => s.SaleId)
                 .OnDelete(DeleteBehavior.Restrict);
-        });
-
-        builder.Entity<SaleDetail>(entity =>
-        {
+            
             entity.HasOne(sd => sd.Product)
                 .WithMany(p => p.SaleDetails)
                 .HasForeignKey(sd => sd.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
+            
+            entity.Property(sd => sd.UnitPrice).HasPrecision(18, 2);
+            entity.Property(sd => sd.Total).HasPrecision(18, 2);
+            
+        });
+        
+        builder.Entity<Product>(entity =>
+        {
+            entity.Property(p => p.Price).HasPrecision(18, 2);
         });
     }
 }
