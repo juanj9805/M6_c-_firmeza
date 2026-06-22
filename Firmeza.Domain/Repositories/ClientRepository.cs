@@ -37,7 +37,10 @@ public class ClientRepository : IClientRepository
 
         if (found is null) return null;
 
-        _context.Entry(found).CurrentValues.SetValues(client);
+        found.Name = client.Name;
+        found.Email = client.Email;
+        found.Phone = client.Phone;
+        found.Address = client.Address;
         found.UpdatedAt = DateTime.UtcNow;
 
         await _context.SaveChangesAsync();

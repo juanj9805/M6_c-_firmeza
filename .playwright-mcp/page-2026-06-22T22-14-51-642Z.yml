@@ -1,0 +1,39 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "Firmeza Admin" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link "Dashboard" [ref=e9] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e10]:
+            - link "Products" [ref=e11] [cursor=pointer]:
+              - /url: /Products
+          - listitem [ref=e12]:
+            - link "Clients" [ref=e13] [cursor=pointer]:
+              - /url: /Clients
+          - listitem [ref=e14]:
+            - link "Sales" [ref=e15] [cursor=pointer]:
+              - /url: /Sales
+  - main [ref=e17]:
+    - heading "Create Client" [level=1] [ref=e18]
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]: Name
+        - textbox "Name" [ref=e22]
+      - generic [ref=e23]:
+        - generic [ref=e24]: Email
+        - textbox "Email" [ref=e25]
+      - generic [ref=e26]:
+        - generic [ref=e27]: Phone
+        - textbox "Phone" [ref=e28]
+      - generic [ref=e29]:
+        - generic [ref=e30]: Address
+        - textbox "Address" [ref=e31]
+      - button "Save" [ref=e32] [cursor=pointer]
+      - link "Cancel" [ref=e33] [cursor=pointer]:
+        - /url: /Clients
+  - contentinfo [ref=e34]:
+    - generic [ref=e35]: © 2026 - Firmeza Admin

@@ -1,0 +1,21 @@
+﻿@model Firmeza.Domain.Models.Dtos.CreateProductDto
+
+<div class="row">
+    <div class="col-12">
+        <form asp-controller="Products" asp-action="Edit" method="post" asp-route-id="@ViewData["Id"]">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input asp-for="Name" type="text" class="form-control">
+            <label asp-for="Description" class="form-label">Description</label>
+            <input asp-for="Description" type="text" class="form-control">
+            <label asp-for="Stock" class="form-label">Stock</label>
+            <input asp-for="Stock" type="text" class="form-control">
+            <label asp-for="Type" class="form-label">Type</label>
+            <input asp-for="Type" type="text" class="form-control">
+            <label asp-for="Price" class="form-label">Price</label>
+            <input asp-for="Price" type="text" class="form-control">
+            <label asp-for="SKU" class="form-label">SKU</label>
+            <input asp-for="SKU" type="text" class="form-control">
+            <button class="btn btn-success">Update</button>
+        </form>
+    </div>
+</div>

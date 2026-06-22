@@ -37,7 +37,12 @@ public class ProductRepository : IProductRepository
 
         if (found is null) return null;
 
-        _context.Entry(found).CurrentValues.SetValues(product);
+        found.Name = product.Name;
+        found.Description = product.Description;
+        found.Stock = product.Stock;
+        found.Type = product.Type;
+        found.Price = product.Price;
+        found.SKU = product.SKU;
         found.UpdatedAt = DateTime.UtcNow;
 
         await _context.SaveChangesAsync();

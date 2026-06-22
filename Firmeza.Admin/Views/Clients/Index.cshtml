@@ -1,0 +1,45 @@
+@model List<Firmeza.Domain.Models.Dtos.ClientDto>
+
+@{
+    ViewData["Title"] = "Clients";
+}
+
+<h1>Clients</h1>
+
+<a class="btn btn-success" asp-action="Create">Create</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>IsActive</th>
+            <th>CreatedAt</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var client in Model)
+        {
+            <tr>
+                <td>@client.Id</td>
+                <td>@client.Name</td>
+                <td>@client.Email</td>
+                <td>@client.Phone</td>
+                <td>@client.Address</td>
+                <td>@client.IsActive</td>
+                <td>@client.CreatedAt</td>
+                <td><a asp-action="Detail" asp-route-id="@client.Id">View</a></td>
+                <td><a asp-action="Edit" asp-route-id="@client.Id">Edit</a></td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@client.Id" method="post">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

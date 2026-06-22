@@ -1,0 +1,101 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "Firmeza Admin" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link "Dashboard" [ref=e9] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e10]:
+            - link "Products" [ref=e11] [cursor=pointer]:
+              - /url: /Products
+          - listitem [ref=e12]:
+            - link "Clients" [ref=e13] [cursor=pointer]:
+              - /url: /Clients
+          - listitem [ref=e14]:
+            - link "Sales" [ref=e15] [cursor=pointer]:
+              - /url: /Sales
+  - main [ref=e17]:
+    - heading "Clients" [level=1] [ref=e18]
+    - link "Create" [ref=e19] [cursor=pointer]:
+      - /url: /Clients/Create
+    - table [ref=e20]:
+      - rowgroup [ref=e21]:
+        - row "Id Name Email Phone Address IsActive CreatedAt" [ref=e22]:
+          - columnheader "Id" [ref=e23]
+          - columnheader "Name" [ref=e24]
+          - columnheader "Email" [ref=e25]
+          - columnheader "Phone" [ref=e26]
+          - columnheader "Address" [ref=e27]
+          - columnheader "IsActive" [ref=e28]
+          - columnheader "CreatedAt" [ref=e29]
+          - columnheader [ref=e30]
+      - rowgroup [ref=e31]:
+        - 'row "1 Carlos Mendoza carlos.mendoza@email.com 3001234567 Calle 10 #45-20, Bogotá True 6/22/2026 10:14:34 PM View Edit Delete" [ref=e32]':
+          - cell "1" [ref=e33]
+          - cell "Carlos Mendoza" [ref=e34]
+          - cell "carlos.mendoza@email.com" [ref=e35]
+          - cell "3001234567" [ref=e36]
+          - 'cell "Calle 10 #45-20, Bogotá" [ref=e37]'
+          - cell "True" [ref=e38]
+          - cell "6/22/2026 10:14:34 PM" [ref=e39]
+          - cell "View" [ref=e40]:
+            - link "View" [ref=e41] [cursor=pointer]:
+              - /url: /Clients/Detail/1
+          - cell "Edit" [ref=e42]:
+            - link "Edit" [ref=e43] [cursor=pointer]:
+              - /url: /Clients/Edit/1
+          - cell "Delete" [ref=e44]:
+            - button "Delete" [ref=e46] [cursor=pointer]
+        - 'row "2 Ana Lucia Torres ana.torres@email.com 3109876543 Carrera 5 #12-34, Medellín True 6/22/2026 10:14:46 PM View Edit Delete" [ref=e47]':
+          - cell "2" [ref=e48]
+          - cell "Ana Lucia Torres" [ref=e49]
+          - cell "ana.torres@email.com" [ref=e50]
+          - cell "3109876543" [ref=e51]
+          - 'cell "Carrera 5 #12-34, Medellín" [ref=e52]'
+          - cell "True" [ref=e53]
+          - cell "6/22/2026 10:14:46 PM" [ref=e54]
+          - cell "View" [ref=e55]:
+            - link "View" [ref=e56] [cursor=pointer]:
+              - /url: /Clients/Detail/2
+          - cell "Edit" [ref=e57]:
+            - link "Edit" [ref=e58] [cursor=pointer]:
+              - /url: /Clients/Edit/2
+          - cell "Delete" [ref=e59]:
+            - button "Delete" [ref=e61] [cursor=pointer]
+        - 'row "3 Pedro Rojas pedro.rojas@email.com 3209999000 Calle 1 #100-200, Cali True 6/22/2026 10:14:58 PM View Edit Delete" [ref=e62]':
+          - cell "3" [ref=e63]
+          - cell "Pedro Rojas" [ref=e64]
+          - cell "pedro.rojas@email.com" [ref=e65]
+          - cell "3209999000" [ref=e66]
+          - 'cell "Calle 1 #100-200, Cali" [ref=e67]'
+          - cell "True" [ref=e68]
+          - cell "6/22/2026 10:14:58 PM" [ref=e69]
+          - cell "View" [ref=e70]:
+            - link "View" [ref=e71] [cursor=pointer]:
+              - /url: /Clients/Detail/3
+          - cell "Edit" [ref=e72]:
+            - link "Edit" [ref=e73] [cursor=pointer]:
+              - /url: /Clients/Edit/3
+          - cell "Delete" [ref=e74]:
+            - button "Delete" [ref=e76] [cursor=pointer]
+        - 'row "4 Maria Fernanda Gil maria.gil@email.com 3154449876 Calle 72 #20-11, Barranquilla True 6/22/2026 10:15:10 PM View Edit Delete" [ref=e77]':
+          - cell "4" [ref=e78]
+          - cell "Maria Fernanda Gil" [ref=e79]
+          - cell "maria.gil@email.com" [ref=e80]
+          - cell "3154449876" [ref=e81]
+          - 'cell "Calle 72 #20-11, Barranquilla" [ref=e82]'
+          - cell "True" [ref=e83]
+          - cell "6/22/2026 10:15:10 PM" [ref=e84]
+          - cell "View" [ref=e85]:
+            - link "View" [ref=e86] [cursor=pointer]:
+              - /url: /Clients/Detail/4
+          - cell "Edit" [ref=e87]:
+            - link "Edit" [ref=e88] [cursor=pointer]:
+              - /url: /Clients/Edit/4
+          - cell "Delete" [ref=e89]:
+            - button "Delete" [ref=e91] [cursor=pointer]
+  - contentinfo [ref=e92]:
+    - generic [ref=e93]: © 2026 - Firmeza Admin

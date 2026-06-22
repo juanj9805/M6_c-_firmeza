@@ -1,12 +1,12 @@
-using Firmeza.Domain.Models.Entities;
+using Firmeza.Domain.Models.Dtos;
 
 namespace Firmeza.Domain.Interfaces;
 
 public interface IClientService
 {
-    Task<List<Client>> GetAllClientsAsync();
-    Task<Client?> GetClientByIdAsync(int id);
-    Task<Client> CreateClientAsync(Client client);
-    Task<Client?> UpdateClientAsync(int id, Client client);
+    Task<List<ClientDto>> GetAllClientsAsync();
+    Task<ClientDto?> GetClientByIdAsync(int id);
+    Task<ClientDto> CreateClientAsync(CreateClientDto client);
+    Task<ClientDto?> UpdateClientAsync(int id, CreateClientDto client);
     Task<bool> DeleteClientAsync(int id);
 }

@@ -1,0 +1,111 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "Firmeza Admin" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link "Dashboard" [ref=e9] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e10]:
+            - link "Products" [ref=e11] [cursor=pointer]:
+              - /url: /Products
+          - listitem [ref=e12]:
+            - link "Clients" [ref=e13] [cursor=pointer]:
+              - /url: /Clients
+          - listitem [ref=e14]:
+            - link "Sales" [ref=e15] [cursor=pointer]:
+              - /url: /Sales
+  - main [ref=e17]:
+    - heading "Dashboard" [level=1] [ref=e18]
+    - paragraph [ref=e19]: Welcome to Firmeza Admin Panel.
+    - link "Create" [ref=e20] [cursor=pointer]:
+      - /url: /Products/Create
+    - table [ref=e21]:
+      - rowgroup [ref=e22]:
+        - row "Id Name Description Stock Type Price SKU IsActive CreatedAt" [ref=e23]:
+          - columnheader "Id" [ref=e24]
+          - columnheader "Name" [ref=e25]
+          - columnheader "Description" [ref=e26]
+          - columnheader "Stock" [ref=e27]
+          - columnheader "Type" [ref=e28]
+          - columnheader "Price" [ref=e29]
+          - columnheader "SKU" [ref=e30]
+          - columnheader "IsActive" [ref=e31]
+          - columnheader "CreatedAt" [ref=e32]
+      - rowgroup [ref=e33]:
+        - row "1 Cement 50kg Standard construction cement 200 Material 12.50 CEM-006 True 6/22/2026 7:28:19 PM View Edit Delete" [ref=e34]:
+          - cell "1" [ref=e35]
+          - cell "Cement 50kg" [ref=e36]
+          - cell "Standard construction cement" [ref=e37]
+          - cell "200" [ref=e38]
+          - cell "Material" [ref=e39]
+          - cell "12.50" [ref=e40]
+          - cell "CEM-006" [ref=e41]
+          - cell "True" [ref=e42]
+          - cell "6/22/2026 7:28:19 PM" [ref=e43]
+          - cell "View" [ref=e44]:
+            - link "View" [ref=e45] [cursor=pointer]:
+              - /url: /Products/Detail/1
+          - cell "Edit" [ref=e46]:
+            - link "Edit" [ref=e47] [cursor=pointer]:
+              - /url: /Products/Edit/1
+          - cell "Delete" [ref=e48]:
+            - button "Delete" [ref=e50] [cursor=pointer]
+        - row "2 Steel Rod 12mm Reinforced steel rod 500 Material 8.75 STL-001 True 6/22/2026 7:28:19 PM View Edit Delete" [ref=e51]:
+          - cell "2" [ref=e52]
+          - cell "Steel Rod 12mm" [ref=e53]
+          - cell "Reinforced steel rod" [ref=e54]
+          - cell "500" [ref=e55]
+          - cell "Material" [ref=e56]
+          - cell "8.75" [ref=e57]
+          - cell "STL-001" [ref=e58]
+          - cell "True" [ref=e59]
+          - cell "6/22/2026 7:28:19 PM" [ref=e60]
+          - cell "View" [ref=e61]:
+            - link "View" [ref=e62] [cursor=pointer]:
+              - /url: /Products/Detail/2
+          - cell "Edit" [ref=e63]:
+            - link "Edit" [ref=e64] [cursor=pointer]:
+              - /url: /Products/Edit/2
+          - cell "Delete" [ref=e65]:
+            - button "Delete" [ref=e67] [cursor=pointer]
+        - row "5 Test Product UPDATED A test product 50 Material 19.99 TST-001 True 6/22/2026 10:01:19 PM View Edit Delete" [ref=e68]:
+          - cell "5" [ref=e69]
+          - cell "Test Product UPDATED" [ref=e70]
+          - cell "A test product" [ref=e71]
+          - cell "50" [ref=e72]
+          - cell "Material" [ref=e73]
+          - cell "19.99" [ref=e74]
+          - cell "TST-001" [ref=e75]
+          - cell "True" [ref=e76]
+          - cell "6/22/2026 10:01:19 PM" [ref=e77]
+          - cell "View" [ref=e78]:
+            - link "View" [ref=e79] [cursor=pointer]:
+              - /url: /Products/Detail/5
+          - cell "Edit" [ref=e80]:
+            - link "Edit" [ref=e81] [cursor=pointer]:
+              - /url: /Products/Edit/5
+          - cell "Delete" [ref=e82]:
+            - button "Delete" [ref=e84] [cursor=pointer]
+        - row "6 Brick 10x20cm Standard red brick 1000 Material 0.75 BRK-001 True 6/22/2026 10:02:22 PM View Edit Delete" [ref=e85]:
+          - cell "6" [ref=e86]
+          - cell "Brick 10x20cm" [ref=e87]
+          - cell "Standard red brick" [ref=e88]
+          - cell "1000" [ref=e89]
+          - cell "Material" [ref=e90]
+          - cell "0.75" [ref=e91]
+          - cell "BRK-001" [ref=e92]
+          - cell "True" [ref=e93]
+          - cell "6/22/2026 10:02:22 PM" [ref=e94]
+          - cell "View" [ref=e95]:
+            - link "View" [ref=e96] [cursor=pointer]:
+              - /url: /Products/Detail/6
+          - cell "Edit" [ref=e97]:
+            - link "Edit" [ref=e98] [cursor=pointer]:
+              - /url: /Products/Edit/6
+          - cell "Delete" [ref=e99]:
+            - button "Delete" [ref=e101] [cursor=pointer]
+  - contentinfo [ref=e102]:
+    - generic [ref=e103]: © 2026 - Firmeza Admin

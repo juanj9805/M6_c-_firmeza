@@ -1,0 +1,53 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "Firmeza Admin" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link "Dashboard" [ref=e9] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e10]:
+            - link "Products" [ref=e11] [cursor=pointer]:
+              - /url: /Products
+          - listitem [ref=e12]:
+            - link "Clients" [ref=e13] [cursor=pointer]:
+              - /url: /Clients
+          - listitem [ref=e14]:
+            - link "Sales" [ref=e15] [cursor=pointer]:
+              - /url: /Sales
+  - main [ref=e17]:
+    - heading "Clients" [level=1] [ref=e18]
+    - link "Create" [ref=e19] [cursor=pointer]:
+      - /url: /Clients/Create
+    - table [ref=e20]:
+      - rowgroup [ref=e21]:
+        - row "Id Name Email Phone Address IsActive CreatedAt" [ref=e22]:
+          - columnheader "Id" [ref=e23]
+          - columnheader "Name" [ref=e24]
+          - columnheader "Email" [ref=e25]
+          - columnheader "Phone" [ref=e26]
+          - columnheader "Address" [ref=e27]
+          - columnheader "IsActive" [ref=e28]
+          - columnheader "CreatedAt" [ref=e29]
+          - columnheader [ref=e30]
+      - rowgroup [ref=e31]:
+        - 'row "1 Carlos Mendoza carlos.mendoza@email.com 3001234567 Calle 10 #45-20, Bogotá True 6/22/2026 10:14:34 PM View Edit Delete" [ref=e32]':
+          - cell "1" [ref=e33]
+          - cell "Carlos Mendoza" [ref=e34]
+          - cell "carlos.mendoza@email.com" [ref=e35]
+          - cell "3001234567" [ref=e36]
+          - 'cell "Calle 10 #45-20, Bogotá" [ref=e37]'
+          - cell "True" [ref=e38]
+          - cell "6/22/2026 10:14:34 PM" [ref=e39]
+          - cell "View" [ref=e40]:
+            - link "View" [ref=e41] [cursor=pointer]:
+              - /url: /Clients/Detail/1
+          - cell "Edit" [ref=e42]:
+            - link "Edit" [ref=e43] [cursor=pointer]:
+              - /url: /Clients/Edit/1
+          - cell "Delete" [ref=e44]:
+            - button "Delete" [ref=e46] [cursor=pointer]
+  - contentinfo [ref=e47]:
+    - generic [ref=e48]: © 2026 - Firmeza Admin
