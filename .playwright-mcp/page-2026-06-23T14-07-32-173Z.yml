@@ -1,0 +1,102 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - link "Firmeza Admin Panel" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: Firmeza
+      - generic [ref=e7]: Admin Panel
+    - navigation [ref=e8]:
+      - generic [ref=e9]: Overview
+      - link "Dashboard" [ref=e10] [cursor=pointer]:
+        - /url: /
+        - img [ref=e11]
+        - text: Dashboard
+      - generic [ref=e16]: Management
+      - link "Products" [ref=e17] [cursor=pointer]:
+        - /url: /Products
+        - img [ref=e18]
+        - text: Products
+      - link "Clients" [ref=e20] [cursor=pointer]:
+        - /url: /Clients
+        - img [ref=e21]
+        - text: Clients
+    - generic [ref=e23]: © 2026 Firmeza
+  - generic [ref=e24]:
+    - generic [ref=e26]: Products
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - generic [ref=e30]: Products
+          - generic [ref=e31]: Manage your product catalog
+        - link "+ New Product" [ref=e32] [cursor=pointer]:
+          - /url: /Products/Create
+      - table [ref=e34]:
+        - rowgroup [ref=e35]:
+          - row "Name SKU Type Stock Price Status" [ref=e36]:
+            - columnheader "Name" [ref=e37]
+            - columnheader "SKU" [ref=e38]
+            - columnheader "Type" [ref=e39]
+            - columnheader "Stock" [ref=e40]
+            - columnheader "Price" [ref=e41]
+            - columnheader "Status" [ref=e42]
+            - columnheader [ref=e43]
+        - rowgroup [ref=e44]:
+          - row "Cement 50kg CEM-006 Material 200 $12.50 Active View Edit Delete" [ref=e45]:
+            - cell "Cement 50kg" [ref=e46]
+            - cell "CEM-006" [ref=e47]
+            - cell "Material" [ref=e48]
+            - cell "200" [ref=e49]
+            - cell "$12.50" [ref=e50]
+            - cell "Active" [ref=e51]:
+              - generic [ref=e52]: Active
+            - cell "View Edit Delete" [ref=e53]:
+              - generic [ref=e54]:
+                - link "View" [ref=e55] [cursor=pointer]:
+                  - /url: /Products/Detail/1
+                - link "Edit" [ref=e56] [cursor=pointer]:
+                  - /url: /Products/Edit/1
+                - button "Delete" [ref=e58] [cursor=pointer]
+          - row "Steel Rod 12mm STL-001 Material 500 $8.75 Active View Edit Delete" [ref=e59]:
+            - cell "Steel Rod 12mm" [ref=e60]
+            - cell "STL-001" [ref=e61]
+            - cell "Material" [ref=e62]
+            - cell "500" [ref=e63]
+            - cell "$8.75" [ref=e64]
+            - cell "Active" [ref=e65]:
+              - generic [ref=e66]: Active
+            - cell "View Edit Delete" [ref=e67]:
+              - generic [ref=e68]:
+                - link "View" [ref=e69] [cursor=pointer]:
+                  - /url: /Products/Detail/2
+                - link "Edit" [ref=e70] [cursor=pointer]:
+                  - /url: /Products/Edit/2
+                - button "Delete" [ref=e72] [cursor=pointer]
+          - row "Brick 10x20cm BRK-001 Material 1000 $0.75 Active View Edit Delete" [ref=e73]:
+            - cell "Brick 10x20cm" [ref=e74]
+            - cell "BRK-001" [ref=e75]
+            - cell "Material" [ref=e76]
+            - cell "1000" [ref=e77]
+            - cell "$0.75" [ref=e78]
+            - cell "Active" [ref=e79]:
+              - generic [ref=e80]: Active
+            - cell "View Edit Delete" [ref=e81]:
+              - generic [ref=e82]:
+                - link "View" [ref=e83] [cursor=pointer]:
+                  - /url: /Products/Detail/6
+                - link "Edit" [ref=e84] [cursor=pointer]:
+                  - /url: /Products/Edit/6
+                - button "Delete" [ref=e86] [cursor=pointer]
+          - row "Sand 25kg Premium SND-025 Aggregate 950 $3.50 Active View Edit Delete" [ref=e87]:
+            - cell "Sand 25kg Premium" [ref=e88]
+            - cell "SND-025" [ref=e89]
+            - cell "Aggregate" [ref=e90]
+            - cell "950" [ref=e91]
+            - cell "$3.50" [ref=e92]
+            - cell "Active" [ref=e93]:
+              - generic [ref=e94]: Active
+            - cell "View Edit Delete" [ref=e95]:
+              - generic [ref=e96]:
+                - link "View" [ref=e97] [cursor=pointer]:
+                  - /url: /Products/Detail/1002
+                - link "Edit" [ref=e98] [cursor=pointer]:
+                  - /url: /Products/Edit/1002
+                - button "Delete" [ref=e100] [cursor=pointer]

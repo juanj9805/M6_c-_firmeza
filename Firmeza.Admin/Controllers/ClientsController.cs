@@ -39,6 +39,7 @@ public class ClientsController : Controller
         try
         {
             await _service.CreateClientAsync(client);
+            TempData["Success"] = "Client created successfully.";
             return RedirectToAction("Index");
         }
         catch (Exception e)
@@ -77,6 +78,7 @@ public class ClientsController : Controller
             var updated = await _service.UpdateClientAsync(id, client);
             if (updated is null) return NotFound();
 
+            TempData["Success"] = "Client updated successfully.";
             return RedirectToAction("Index");
         }
         catch (Exception e)

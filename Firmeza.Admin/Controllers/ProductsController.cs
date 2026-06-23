@@ -71,6 +71,7 @@ public class ProductsController : Controller
                 return NotFound();
             }
             
+            TempData["Success"] = "Product updated successfully.";
             return RedirectToAction("Index");
         }
         catch (Exception e)
@@ -98,6 +99,7 @@ public class ProductsController : Controller
         try
         {
             await _service.CreateProductAsync(product);
+            TempData["Success"] = "Product created successfully.";
             return RedirectToAction("Index");
         }
         catch (Exception e)

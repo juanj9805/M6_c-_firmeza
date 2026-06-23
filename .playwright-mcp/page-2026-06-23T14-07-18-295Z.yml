@@ -1,0 +1,52 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - link "Firmeza Admin Panel" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: Firmeza
+      - generic [ref=e7]: Admin Panel
+    - navigation [ref=e8]:
+      - generic [ref=e9]: Overview
+      - link "Dashboard" [ref=e10] [cursor=pointer]:
+        - /url: /
+        - img [ref=e11]
+        - text: Dashboard
+      - generic [ref=e16]: Management
+      - link "Products" [ref=e17] [cursor=pointer]:
+        - /url: /Products
+        - img [ref=e18]
+        - text: Products
+      - link "Clients" [ref=e20] [cursor=pointer]:
+        - /url: /Clients
+        - img [ref=e21]
+        - text: Clients
+    - generic [ref=e23]: © 2026 Firmeza
+  - generic [ref=e24]:
+    - generic [ref=e26]: Edit Product
+    - generic [ref=e27]:
+      - generic [ref=e29]:
+        - generic [ref=e30]: Edit Product
+        - generic [ref=e31]: Update product information
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: Name
+          - textbox "Name" [ref=e36]: Sand 25kg
+        - generic [ref=e37]:
+          - generic [ref=e38]: SKU
+          - textbox "SKU" [ref=e39]: SND-025
+        - generic [ref=e40]:
+          - generic [ref=e41]: Type
+          - textbox "Type" [ref=e42]: Aggregate
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]: Stock
+            - spinbutton "Stock" [ref=e46]: "800"
+          - generic [ref=e47]:
+            - generic [ref=e48]: Price
+            - spinbutton "Price" [ref=e49]: "3.50"
+        - generic [ref=e50]:
+          - generic [ref=e51]: Description
+          - textbox "Description" [ref=e52]: Fine construction sand
+        - generic [ref=e53]:
+          - button "Update Product" [ref=e54] [cursor=pointer]
+          - link "Cancel" [ref=e55] [cursor=pointer]:
+            - /url: /Products

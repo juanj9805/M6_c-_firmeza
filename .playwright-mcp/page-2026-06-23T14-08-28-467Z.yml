@@ -1,0 +1,45 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - link "Firmeza Admin Panel" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: Firmeza
+      - generic [ref=e7]: Admin Panel
+    - navigation [ref=e8]:
+      - generic [ref=e9]: Overview
+      - link "Dashboard" [ref=e10] [cursor=pointer]:
+        - /url: /
+        - img [ref=e11]
+        - text: Dashboard
+      - generic [ref=e16]: Management
+      - link "Products" [ref=e17] [cursor=pointer]:
+        - /url: /Products
+        - img [ref=e18]
+        - text: Products
+      - link "Clients" [ref=e20] [cursor=pointer]:
+        - /url: /Clients
+        - img [ref=e21]
+        - text: Clients
+    - generic [ref=e23]: © 2026 Firmeza
+  - generic [ref=e24]:
+    - generic [ref=e26]: Edit Client
+    - generic [ref=e27]:
+      - generic [ref=e29]:
+        - generic [ref=e30]: Edit Client
+        - generic [ref=e31]: Update client information
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: Name
+          - textbox "Name" [ref=e36]: Carlos Mendez
+        - generic [ref=e37]:
+          - generic [ref=e38]: Email
+          - textbox "Email" [ref=e39]: carlos.mendez@email.com
+        - generic [ref=e40]:
+          - generic [ref=e41]: Phone
+          - textbox "Phone" [ref=e42]: +57 300 123 456
+        - generic [ref=e43]:
+          - generic [ref=e44]: Address
+          - textbox "Address" [ref=e45]: Av. Principal 45, Bogotá
+        - generic [ref=e46]:
+          - button "Update Client" [ref=e47] [cursor=pointer]
+          - link "Cancel" [ref=e48] [cursor=pointer]:
+            - /url: /Clients

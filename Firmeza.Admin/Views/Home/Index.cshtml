@@ -1,10 +1,16 @@
-﻿@model Firmeza.Domain.Models.Dtos.DashboardDto
+@model Firmeza.Domain.Models.Dtos.DashboardDto
 
 @{
     ViewData["Title"] = "Dashboard";
 }
 
-<h1>Dashboard</h1>
-<p>Welcome to Firmeza Admin Panel.</p>
-<p>@Model.ClientTotalAmount</p>
-<p>@Model.ProductTotalAmount</p>
+<div class="metric-grid">
+    <div class="metric-card">
+        <div class="metric-label">Total Products</div>
+        <div class="metric-value accent">@Model.ProductTotalAmount</div>
+    </div>
+    <div class="metric-card">
+        <div class="metric-label">Total Clients</div>
+        <div class="metric-value">@Model.ClientTotalAmount</div>
+    </div>
+</div>

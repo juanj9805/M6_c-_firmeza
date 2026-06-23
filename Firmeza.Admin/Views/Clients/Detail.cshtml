@@ -4,26 +4,53 @@
     ViewData["Title"] = "Client Detail";
 }
 
-<h1>Client Detail</h1>
+<div class="page-header">
+    <div>
+        <div class="page-title">@Model.Name</div>
+        <div class="page-subtitle">Client #@Model.Id</div>
+    </div>
+    <div class="actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-ghost">Edit</a>
+        <a asp-action="Index" class="btn btn-ghost">Back</a>
+    </div>
+</div>
 
-<dl>
-    <dt>Id</dt>
-    <dd>@Model.Id</dd>
-    <dt>Name</dt>
-    <dd>@Model.Name</dd>
-    <dt>Email</dt>
-    <dd>@Model.Email</dd>
-    <dt>Phone</dt>
-    <dd>@Model.Phone</dd>
-    <dt>Address</dt>
-    <dd>@Model.Address</dd>
-    <dt>Active</dt>
-    <dd>@Model.IsActive</dd>
-    <dt>Created</dt>
-    <dd>@Model.CreatedAt</dd>
-    <dt>Updated</dt>
-    <dd>@Model.UpdatedAt</dd>
-</dl>
-
-<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
-<a asp-action="Index" class="btn btn-secondary">Back</a>
+<div class="detail-grid">
+    <div class="detail-field">
+        <div class="detail-field-label">Name</div>
+        <div class="detail-field-value">@Model.Name</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Email</div>
+        <div class="detail-field-value mono">@Model.Email</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Phone</div>
+        <div class="detail-field-value mono">@Model.Phone</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Address</div>
+        <div class="detail-field-value">@Model.Address</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Status</div>
+        <div class="detail-field-value">
+            @if (Model.IsActive)
+            {
+                <span class="badge badge-success">Active</span>
+            }
+            else
+            {
+                <span class="badge badge-danger">Inactive</span>
+            }
+        </div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Created</div>
+        <div class="detail-field-value mono">@Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Updated</div>
+        <div class="detail-field-value mono">@(Model.UpdatedAt?.ToString("yyyy-MM-dd HH:mm") ?? "—")</div>
+    </div>
+</div>

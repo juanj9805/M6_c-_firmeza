@@ -1,3 +1,64 @@
-﻿@model Firmeza.Domain.Models.Dtos.ProductDto
+@model Firmeza.Domain.Models.Dtos.ProductDto
 
-@Model.Name
+@{
+    ViewData["Title"] = "Product Detail";
+}
+
+<div class="page-header">
+    <div>
+        <div class="page-title">@Model.Name</div>
+        <div class="page-subtitle">Product #@Model.Id</div>
+    </div>
+    <div class="actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-ghost">Edit</a>
+        <a asp-action="Index" class="btn btn-ghost">Back</a>
+    </div>
+</div>
+
+<div class="detail-grid">
+    <div class="detail-field">
+        <div class="detail-field-label">Name</div>
+        <div class="detail-field-value">@Model.Name</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">SKU</div>
+        <div class="detail-field-value mono">@Model.SKU</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Type</div>
+        <div class="detail-field-value">@Model.Type</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Price</div>
+        <div class="detail-field-value mono">$@Model.Price.ToString("N2")</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Stock</div>
+        <div class="detail-field-value mono">@Model.Stock</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Status</div>
+        <div class="detail-field-value">
+            @if (Model.IsActive)
+            {
+                <span class="badge badge-success">Active</span>
+            }
+            else
+            {
+                <span class="badge badge-danger">Inactive</span>
+            }
+        </div>
+    </div>
+    <div class="detail-field" style="grid-column: 1 / -1">
+        <div class="detail-field-label">Description</div>
+        <div class="detail-field-value">@(Model.Description ?? "—")</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Created</div>
+        <div class="detail-field-value mono">@Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Updated</div>
+        <div class="detail-field-value mono">@(Model.UpdatedAt?.ToString("yyyy-MM-dd HH:mm") ?? "—")</div>
+    </div>
+</div>
