@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — Firmeza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-base);
+            padding: 32px 16px;
+        }
+
+        .auth-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            width: 100%;
+            max-width: 480px;
+        }
+
+        /* Collapse Identity UI two-column layout into single column */
+        .auth-card .row {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+        .auth-card [class*="col-"] {
+            width: 100% !important;
+            max-width: 100% !important;
+            flex: none !important;
+            padding: 0 !important;
+        }
+
+        /* Hide external providers column — none configured */
+        .auth-card section:has(h3) { display: none !important; }
+
+        /* Override h1 "Log in" */
+        .auth-card h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 3px;
+            color: var(--text-primary);
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+
+        /* Hide the redundant "Use a local account to log in." subtitle */
+        .auth-card h4 { display: none; }
+
+        /* Divider */
+        .auth-card hr {
+            border-color: var(--border);
+            margin: 16px 0 20px;
+        }
+
+        /* Full-width form and inputs */
+        .auth-card form { width: 100%; }
+        .auth-card .form-floating,
+        .auth-card .form-group { margin-bottom: 16px; width: 100%; }
+        .auth-card .form-floating input,
+        .auth-card .form-group input { width: 100% !important; box-sizing: border-box; }
+
+        /* Links (Forgot password, Register, etc.) */
+        .auth-card form p {
+            margin: 8px 0 0;
+            font-size: 13px;
+        }
+        .auth-card form p a {
+            color: var(--accent);
+        }
+
+        .auth-brand {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .auth-brand-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 5px;
+            color: var(--accent);
+            display: block;
+            line-height: 1;
+        }
+
+        .auth-brand-sub {
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 4px;
+            display: block;
+        }
+
+        .auth-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Override Identity UI form styles */
+        .auth-card input.form-control {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .auth-card input.form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-dim);
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+        }
+
+        .auth-card label {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .auth-card .btn-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #0c0e14;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            width: 100%;
+            padding: 10px;
+            border-radius: var(--radius-sm);
+        }
+
+        .auth-card .btn-primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .auth-card a {
+            color: var(--accent);
+            font-size: 13px;
+        }
+
+        .auth-card a:hover {
+            color: var(--accent-hover);
+        }
+
+        .auth-card .text-danger {
+            color: var(--danger);
+            font-size: 12px;
+        }
+
+        .auth-card .checkbox label {
+            font-size: 13px;
+            letter-spacing: 0;
+            text-transform: none;
+            color: var(--text-secondary);
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-brand">
+                <a asp-controller="Home" asp-action="Index" style="text-decoration:none">
+                    <span class="auth-brand-name">Firmeza</span>
+                    <span class="auth-brand-sub">Admin Panel</span>
+                </a>
+            </div>
+            @RenderBody()
+            <div class="auth-footer">&copy; 2026 Firmeza</div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

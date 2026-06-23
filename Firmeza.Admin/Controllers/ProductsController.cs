@@ -1,9 +1,11 @@
 ﻿using Firmeza.Domain.Interfaces;
 using Firmeza.Domain.Models.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Firmeza.Admin.Controllers;
 
+[Authorize(Roles = "Admin")]
 public class ProductsController : Controller
 {
     private readonly IProductService _service;
