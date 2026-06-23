@@ -62,6 +62,6 @@ jobs:
             docker run -d --name ${{ github.event.repository.name }} \
               --network firmeza-net \
               --restart always \
-              -p 3000:8080 \
+              -p 10000:8080 \
               -e ConnectionStrings__SqlConnection="${{ secrets.DB_CONNECTION_STRING }}" \
               $IMAGE:latest
