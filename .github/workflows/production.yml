@@ -37,7 +37,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          IMAGE=ghcr.io/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          IMAGE=ghcr.io/juanj9805/firmeza
           docker build -f Dockerfile -t $IMAGE:latest .
           docker push $IMAGE:latest
 
@@ -54,7 +54,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            IMAGE=ghcr.io/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+            IMAGE=ghcr.io/juanj9805/firmeza
             docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.TOKEN }}
             docker pull $IMAGE:latest
             docker stop ${{ github.event.repository.name }} || true
