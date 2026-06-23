@@ -37,8 +37,9 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -f Dockerfile -t ghcr.io/${{ github.repository }}:latest .
-          docker push ghcr.io/${{ github.repository }}:latest
+          IMAGE=ghcr.io/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          docker build -f Dockerfile -t $IMAGE:latest .
+          docker push $IMAGE:latest
 
   deploy:
     needs: build-and-push
@@ -53,8 +54,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
+            IMAGE=ghcr.io/$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
             docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.TOKEN }}
-            docker pull ghcr.io/${{ github.repository }}:latest
+            docker pull $IMAGE:latest
             docker stop ${{ github.event.repository.name }} || true
             docker rm ${{ github.event.repository.name }} || true
             docker run -d --name ${{ github.event.repository.name }} \
@@ -62,4 +64,4 @@ jobs:
               --restart always \
               -p 8080:8080 \
               -e ConnectionStrings__SqlConnection="${{ secrets.DB_CONNECTION_STRING }}" \
-              ghcr.io/${{ github.repository }}:latest
+              $IMAGE:latest
