@@ -9,7 +9,10 @@
         <div class="page-title">Products</div>
         <div class="page-subtitle">Manage your product catalog</div>
     </div>
-    <a class="btn btn-primary" asp-action="Create">+ New Product</a>
+    <div style="display:flex;gap:0.5rem">
+        <a class="btn btn-ghost" asp-action="Import">Import Excel</a>
+        <a class="btn btn-primary" asp-action="Create">+ New Product</a>
+    </div>
 </div>
 
 @if (!Model.Any())

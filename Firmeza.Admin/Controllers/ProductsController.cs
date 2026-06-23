@@ -2,6 +2,7 @@
 using Firmeza.Domain.Models.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using OfficeOpenXml;
 
 namespace Firmeza.Admin.Controllers;
 
@@ -128,5 +129,88 @@ public class ProductsController : Controller
             TempData["Error"] = "Could not delete product. Please try again.";
             return RedirectToAction("Index");
         }
+    }
+
+    [HttpGet]
+    public IActionResult Import() => View();
+
+    [HttpPost]
+    public async Task<IActionResult> Import(IFormFile file)
+    {
+        if (file is null || file.Length == 0)
+        {
+            ModelState.AddModelError("", "Please select an Excel file.");
+            return View();
+        }
+
+        if (!file.FileName.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase))
+        {
+            ModelState.AddModelError("", "Only .xlsx files are supported.");
+            return View();
+        }
+
+        int created = 0;
+        var errors = new List<string>();
+
+        try
+        {
+            using var stream = file.OpenReadStream();
+            using var package = new ExcelPackage(stream);
+            var sheet = package.Workbook.Worksheets[0];
+
+            if (sheet.Dimension is null)
+            {
+                ModelState.AddModelError("", "The file is empty.");
+                return View();
+            }
+
+            for (int row = 2; row <= sheet.Dimension.Rows; row++)
+            {
+                var name = sheet.Cells[row, 1].Value?.ToString()?.Trim();
+                var sku = sheet.Cells[row, 2].Value?.ToString()?.Trim();
+                var type = sheet.Cells[row, 3].Value?.ToString()?.Trim();
+                var stockRaw = sheet.Cells[row, 4].Value?.ToString()?.Trim();
+                var priceRaw = sheet.Cells[row, 5].Value?.ToString()?.Trim();
+                var description = sheet.Cells[row, 6].Value?.ToString()?.Trim();
+
+                if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(sku) ||
+                    string.IsNullOrEmpty(type) || string.IsNullOrEmpty(stockRaw) ||
+                    string.IsNullOrEmpty(priceRaw))
+                {
+                    errors.Add($"Row {row}: missing required fields.");
+                    continue;
+                }
+
+                if (!int.TryParse(stockRaw, out var stock) || !decimal.TryParse(priceRaw, out var price))
+                {
+                    errors.Add($"Row {row}: invalid Stock or Price format.");
+                    continue;
+                }
+
+                await _service.CreateProductAsync(new CreateProductDto
+                {
+                    Name = name,
+                    SKU = sku,
+                    Type = type,
+                    Stock = stock,
+                    Price = price,
+                    Description = description
+                });
+
+                created++;
+            }
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Failed to import products from Excel");
+            ModelState.AddModelError("", "Failed to process the file.");
+            return View();
+        }
+
+        TempData["Success"] = $"{created} product(s) imported successfully.";
+        if (errors.Any())
+            TempData["Error"] = string.Join(" | ", errors);
+
+        return RedirectToAction("Index");
     }
 }

@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Import Products";
+}
+
+<div class="page-header">
+    <div>
+        <div class="page-title">Import Products</div>
+        <div class="page-subtitle">Bulk upload products from an Excel file</div>
+    </div>
+    <a asp-action="Index" class="btn btn-ghost">← Back</a>
+</div>
+
+<div class="table-wrapper" style="max-width:600px">
+    <form asp-action="Import" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger" style="margin-bottom:1rem"></div>
+
+        <div class="form-group">
+            <label class="form-label">Excel File (.xlsx)</label>
+            <input type="file" name="file" accept=".xlsx" class="form-control" required />
+        </div>
+
+        <div style="margin-top:1.5rem">
+            <button type="submit" class="btn btn-primary">Upload & Import</button>
+        </div>
+    </form>
+
+    <div style="margin-top:2rem; border-top:1px solid var(--border); padding-top:1.5rem">
+        <div class="page-subtitle" style="margin-bottom:0.75rem">Expected column order (row 1 = headers)</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name *</td>
+                    <td>SKU *</td>
+                    <td>Type *</td>
+                    <td>Stock *</td>
+                    <td>Price *</td>
+                    <td>Description</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

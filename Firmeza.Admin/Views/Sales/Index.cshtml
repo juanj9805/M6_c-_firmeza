@@ -57,6 +57,7 @@ else
                             <div class="actions">
                                 <a asp-action="Detail" asp-route-id="@sale.Id" class="btn btn-ghost btn-sm">View</a>
                                 <a asp-action="Edit" asp-route-id="@sale.Id" class="btn btn-ghost btn-sm">Edit</a>
+                                <a asp-action="Receipt" asp-route-id="@sale.Id" class="btn btn-ghost btn-sm" target="_blank">PDF</a>
                                 <form asp-action="Delete" asp-route-id="@sale.Id" method="post" style="margin:0">
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 </form>

@@ -2,6 +2,9 @@ using Firmeza.Domain.Interfaces;
 using Firmeza.Domain.Models.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
 
 namespace Firmeza.Admin.Controllers;
 
@@ -106,5 +109,91 @@ public class SalesController : Controller
             TempData["Error"] = "Could not delete sale. Please try again.";
             return RedirectToAction("Index");
         }
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Receipt(int id)
+    {
+        var sale = await _service.GetSaleByIdAsync(id);
+        if (sale is null) return NotFound();
+
+        var pdf = Document.Create(container =>
+        {
+            container.Page(page =>
+            {
+                page.Size(PageSizes.A4);
+                page.Margin(40);
+                page.DefaultTextStyle(t => t.FontSize(11).FontFamily("Arial"));
+
+                page.Content().Column(col =>
+                {
+                    col.Spacing(16);
+
+                    // Header
+                    col.Item().Row(row =>
+                    {
+                        row.RelativeItem().Column(c =>
+                        {
+                            c.Item().Text("FIRMEZA").Bold().FontSize(24);
+                            c.Item().Text("Construction Materials").FontSize(12).FontColor("#888888");
+                        });
+                        row.ConstantItem(160).Column(c =>
+                        {
+                            c.Item().Text($"Receipt #{sale.Id}").Bold().FontSize(14).AlignRight();
+                            c.Item().Text(sale.CreatedAt.ToString("yyyy-MM-dd")).FontColor("#888888").AlignRight();
+                        });
+                    });
+
+                    col.Item().LineHorizontal(1).LineColor("#333333");
+
+                    // Client info
+                    col.Item().Column(c =>
+                    {
+                        c.Item().Text("BILLED TO").Bold().FontSize(10).FontColor("#888888");
+                        c.Item().Text(sale.ClientName).Bold().FontSize(13);
+                    });
+
+                    // Totals table
+                    col.Item().Table(table =>
+                    {
+                        table.ColumnsDefinition(cols =>
+                        {
+                            cols.RelativeColumn();
+                            cols.ConstantColumn(120);
+                        });
+
+                        table.Header(header =>
+                        {
+                            header.Cell().Background("#1a1a1a").Padding(8)
+                                .Text("Description").Bold().FontColor("#ffffff");
+                            header.Cell().Background("#1a1a1a").Padding(8)
+                                .Text("Amount").Bold().FontColor("#ffffff").AlignRight();
+                        });
+
+                        table.Cell().BorderBottom(1).BorderColor("#333333").Padding(8).Text("Subtotal");
+                        table.Cell().BorderBottom(1).BorderColor("#333333").Padding(8)
+                            .Text($"${sale.SubTotal:N2}").AlignRight();
+
+                        table.Cell().BorderBottom(1).BorderColor("#333333").Padding(8).Text("Tax");
+                        table.Cell().BorderBottom(1).BorderColor("#333333").Padding(8)
+                            .Text($"${sale.Tax:N2}").AlignRight();
+
+                        table.Cell().Padding(8).Text("Total").Bold();
+                        table.Cell().Padding(8).Text($"${sale.Total:N2}").Bold().AlignRight();
+                    });
+
+                    // Status
+                    col.Item().AlignRight()
+                        .Text($"Status: {sale.Status}").FontColor("#888888").FontSize(10);
+                });
+
+                page.Footer().AlignCenter()
+                    .Text($"Generated {DateTime.UtcNow:yyyy-MM-dd HH:mm} UTC")
+                    .FontSize(9).FontColor("#888888");
+            });
+        });
+
+        var bytes = pdf.GeneratePdf();
+        return File(bytes, "application/pdf", $"receipt-{sale.Id}.pdf");
     }
 }
