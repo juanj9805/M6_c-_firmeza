@@ -2,6 +2,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /app
 
+RUN dotnet workload install aspnet
+
 # Copy source and publish
 COPY . .
 RUN dotnet publish Firmeza.Admin/Firmeza.Admin.csproj -c Release -o /out
