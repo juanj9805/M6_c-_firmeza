@@ -18,6 +18,8 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddScoped<ISaleRepository, SaleRepository>();
+builder.Services.AddScoped<ISaleService, SaleService>();
 builder.Services.AddRazorPages();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
@@ -31,7 +33,6 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
-
 
 using (var scope = app.Services.CreateScope())
 {

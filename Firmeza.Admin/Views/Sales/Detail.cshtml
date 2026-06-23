@@ -1,0 +1,51 @@
+@model Firmeza.Domain.Models.Dtos.SaleDto
+
+@{
+    ViewData["Title"] = "Sale Detail";
+}
+
+<div class="page-header">
+    <div>
+        <div class="page-title">Sale #@Model.Id</div>
+        <div class="page-subtitle">@Model.ClientName</div>
+    </div>
+    <div class="actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-ghost">Edit</a>
+        <a asp-action="Index" class="btn btn-ghost">Back</a>
+    </div>
+</div>
+
+<div class="detail-grid">
+    <div class="detail-field">
+        <div class="detail-field-label">Client</div>
+        <div class="detail-field-value">@Model.ClientName</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Status</div>
+        <div class="detail-field-value">
+            <span class="badge @(Model.Status == "Completed" ? "badge-success" : "badge-warning")">
+                @Model.Status
+            </span>
+        </div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">SubTotal</div>
+        <div class="detail-field-value mono">$@Model.SubTotal.ToString("N2")</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Tax</div>
+        <div class="detail-field-value mono">$@Model.Tax.ToString("N2")</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Total</div>
+        <div class="detail-field-value mono">$@Model.Total.ToString("N2")</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Created</div>
+        <div class="detail-field-value mono">@Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</div>
+    </div>
+    <div class="detail-field">
+        <div class="detail-field-label">Updated</div>
+        <div class="detail-field-value mono">@(Model.UpdatedAt?.ToString("yyyy-MM-dd HH:mm") ?? "—")</div>
+    </div>
+</div>

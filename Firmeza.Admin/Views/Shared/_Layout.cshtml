@@ -50,6 +50,14 @@
                 </svg>
                 Clients
             </a>
+            <a asp-controller="Sales" asp-action="Index"
+               class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Sales" ? "active" : "")"
+               aria-current="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Sales" ? "page" : null)">
+                <svg class="sidebar-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M1 2h14v2H1V2zm0 4h14v2H1V6zm0 4h9v2H1v-2zm11 0l2 2-2 2v-4z"/>
+                </svg>
+                Sales
+            </a>
         </nav>
         <div class="sidebar-footer">&copy; 2026 Firmeza</div>
     </aside>

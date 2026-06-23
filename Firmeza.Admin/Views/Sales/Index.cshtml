@@ -1,0 +1,70 @@
+@model List<Firmeza.Domain.Models.Dtos.SaleDto>
+
+@{
+    ViewData["Title"] = "Sales";
+}
+
+<div class="page-header">
+    <div>
+        <div class="page-title">Sales</div>
+        <div class="page-subtitle">Manage your sales records</div>
+    </div>
+    <a class="btn btn-primary" asp-action="Create">+ New Sale</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="table-wrapper">
+        <div class="empty-state">
+            <div class="empty-state-title">No Sales Yet</div>
+            <div class="empty-state-sub">Register your first sale to get started.</div>
+            <a asp-action="Create" class="btn btn-primary">+ New Sale</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Client</th>
+                    <th>SubTotal</th>
+                    <th>Tax</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var sale in Model)
+                {
+                    <tr>
+                        <td><span class="mono">@sale.Id</span></td>
+                        <td>@sale.ClientName</td>
+                        <td><span class="mono">$@sale.SubTotal.ToString("N2")</span></td>
+                        <td><span class="mono">$@sale.Tax.ToString("N2")</span></td>
+                        <td><span class="mono">$@sale.Total.ToString("N2")</span></td>
+                        <td>
+                            <span class="badge @(sale.Status == "Completed" ? "badge-success" : "badge-warning")">
+                                @sale.Status
+                            </span>
+                        </td>
+                        <td><span class="mono">@sale.CreatedAt.ToString("yyyy-MM-dd")</span></td>
+                        <td>
+                            <div class="actions">
+                                <a asp-action="Detail" asp-route-id="@sale.Id" class="btn btn-ghost btn-sm">View</a>
+                                <a asp-action="Edit" asp-route-id="@sale.Id" class="btn btn-ghost btn-sm">Edit</a>
+                                <form asp-action="Delete" asp-route-id="@sale.Id" method="post" style="margin:0">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
