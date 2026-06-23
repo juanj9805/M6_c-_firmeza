@@ -7,10 +7,12 @@ namespace Firmeza.Admin.Controllers;
 public class ProductsController : Controller
 {
     private readonly IProductService _service;
+    private readonly ILogger<ProductsController> _logger;
 
-    public ProductsController(IProductService service)
+    public ProductsController(IProductService service, ILogger<ProductsController> logger)
     {
         _service = service;
+        _logger = logger;
     }
     public async Task<IActionResult> Index()
     {
@@ -59,14 +61,24 @@ public class ProductsController : Controller
         {
             return View(product);
         }
-        var updateProduct = await _service.UpdateProductAsync(id, product);
 
-        if (updateProduct is null)
+        try
         {
-            return NotFound();
+            var updateProduct = await _service.UpdateProductAsync(id, product);
+
+            if (updateProduct is null)
+            {
+                return NotFound();
+            }
+            
+            return RedirectToAction("Index");
         }
-        
-        return RedirectToAction("Index");
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Failed to update product");
+            ModelState.AddModelError("", "DB unavailable");
+            return View(product);
+        }
     }
 
     [HttpGet]
@@ -83,17 +95,34 @@ public class ProductsController : Controller
             return View(product);
         }
 
-        await _service.CreateProductAsync(product);
-
-        return RedirectToAction("Index");
+        try
+        {
+            await _service.CreateProductAsync(product);
+            return RedirectToAction("Index");
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Failed to create product");
+            ModelState.AddModelError("", "DB unavailable");
+           return View(product);
+        }
     }
-    
     
     [HttpPost]
     public async Task<IActionResult> Delete(int id)
     {
-        await _service.DeleteProductAsync(id);
+        try
+        {
+            await _service.DeleteProductAsync(id);
 
-        return RedirectToAction("Index");
+            return RedirectToAction("Index");
+
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Failed to delete product");
+            TempData["Error"] = "Could not delete product. Please try again.";
+            return RedirectToAction("Index");
+        }
     }
 }

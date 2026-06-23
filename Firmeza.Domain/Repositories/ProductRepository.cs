@@ -63,4 +63,9 @@ public class ProductRepository : IProductRepository
 
         return true;
     }
+
+    public async Task<int> GetCountAsync()
+    {
+        return await _context.Products.CountAsync();
+    }
 }

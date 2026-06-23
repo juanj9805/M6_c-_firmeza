@@ -57,4 +57,10 @@ public class ClientRepository : IClientRepository
         await _context.SaveChangesAsync();
         return true;
     }
+    
+    public async Task<int> GetCountAsync()
+    {
+        return await _context.Clients.CountAsync();
+    }
+    
 }

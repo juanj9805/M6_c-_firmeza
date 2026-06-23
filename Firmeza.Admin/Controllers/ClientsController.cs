@@ -7,10 +7,12 @@ namespace Firmeza.Admin.Controllers;
 public class ClientsController : Controller
 {
     private readonly IClientService _service;
+    private readonly ILogger<ClientsController> _logger;
 
-    public ClientsController(IClientService service)
+    public ClientsController(IClientService service, ILogger<ClientsController> logger)
     {
         _service = service;
+        _logger = logger;
     }
 
     public async Task<IActionResult> Index()
@@ -33,8 +35,18 @@ public class ClientsController : Controller
     public async Task<IActionResult> Create(CreateClientDto client)
     {
         if (!ModelState.IsValid) return View(client);
-        await _service.CreateClientAsync(client);
-        return RedirectToAction("Index");
+
+        try
+        {
+            await _service.CreateClientAsync(client);
+            return RedirectToAction("Index");
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Failed to create client");
+            ModelState.AddModelError("", "DB unavailable");
+            return View(client);
+        }
     }
 
     [HttpGet]
@@ -60,16 +72,34 @@ public class ClientsController : Controller
     {
         if (!ModelState.IsValid) return View(client);
 
-        var updated = await _service.UpdateClientAsync(id, client);
-        if (updated is null) return NotFound();
+        try
+        {
+            var updated = await _service.UpdateClientAsync(id, client);
+            if (updated is null) return NotFound();
 
-        return RedirectToAction("Index");
+            return RedirectToAction("Index");
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Failed to edit client");
+            ModelState.AddModelError("", "DB unavailable");
+            return View(client);
+        }
     }
 
     [HttpPost]
     public async Task<IActionResult> Delete(int id)
     {
-        await _service.DeleteClientAsync(id);
-        return RedirectToAction("Index");
+        try
+        {
+            await _service.DeleteClientAsync(id);
+            return RedirectToAction("Index");
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Failed to delete client");
+            TempData["Error"] = "Could not delete client. Please try again.";
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -5,8 +5,15 @@ namespace Firmeza.Admin.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    private readonly IDashboardService _dashboard;
+
+    public HomeController(IDashboardService dashboard)
     {
-        return View();
+        _dashboard = dashboard;
+    }
+    public async Task<IActionResult> Index()
+    {
+        var data = await _dashboard.Dashboard();
+        return View(data);
     }
 }
